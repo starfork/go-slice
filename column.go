@@ -46,3 +46,12 @@ func (e Col) Uint32() []uint32 {
 	}
 	return rs
 }
+
+// 此处没有判定类型是否相同，使用时自行判定
+func (e Col) Uint64() []uint64 {
+	rs := []uint64{}
+	for _, v := range e {
+		rs = append(rs, v.(uint64))
+	}
+	return rs
+}
