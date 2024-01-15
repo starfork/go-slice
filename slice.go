@@ -58,6 +58,7 @@ func (s Slice[T]) Map(fn func(k T) T) Slice[T] {
 	for _, item := range s {
 		res = append(res, fn(item))
 	}
+	s = res //给后续用
 	return res
 }
 
@@ -69,6 +70,7 @@ func (s Slice[T]) Filter(fn func(T) bool) Slice[T] {
 			res = append(res, item)
 		}
 	}
+	s = res //给后续用
 	return res
 }
 
@@ -84,7 +86,7 @@ func (s Slice[T]) Unique() Slice[T] {
 	for _, k := range tmp {
 		res = append(res, k)
 	}
-	s = res
+	s = res //给后续用
 	return s
 }
 
