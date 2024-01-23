@@ -7,6 +7,9 @@ type Col []any
 func Colunm(source any, key string) Col {
 	var rs []any
 	val := reflect.ValueOf(source)
+	if val.Kind() != reflect.Slice {
+		return rs
+	}
 	for i := 0; i < val.Len(); i++ {
 		k := val.Index(i).Elem()
 		f := k.FieldByName(key).Interface()
