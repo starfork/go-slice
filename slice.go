@@ -1,5 +1,7 @@
 package slice
 
+import "slices"
+
 type Slice[T comparable] []T
 
 func New[T comparable](a []T) Slice[T] {
@@ -15,12 +17,7 @@ func (s Slice[T]) Contains(key T, f ...func(k T) bool) bool {
 	if len(f) > 0 {
 		fn = f[0]
 	}
-	for _, v := range s {
-		if fn(v) {
-			return true
-		}
-	}
-	return false
+	return slices.ContainsFunc(s, fn)
 }
 
 // 默认返回.不包含k，则返回v
