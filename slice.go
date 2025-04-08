@@ -113,6 +113,20 @@ func (s Slice[T]) Intersect(b Slice[T]) Slice[T] {
 	return inter
 }
 
+// 只判定是否有交集
+func (s Slice[T]) HasIntersect(b Slice[T]) bool {
+	set := make(map[T]struct{}, len(s))
+	for _, v := range s {
+		set[v] = struct{}{}
+	}
+	for _, v := range b {
+		if _, ok := set[v]; ok {
+			return true
+		}
+	}
+	return false
+}
+
 // 差集
 func (s Slice[T]) Diff(b Slice[T]) Slice[T] {
 	diff := make([]T, 0)
