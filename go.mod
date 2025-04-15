@@ -1,3 +1,3 @@
 module github.com/starfork/go-slice
 
-go 1.21.4
+go 1.24.2
